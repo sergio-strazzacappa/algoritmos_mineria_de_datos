@@ -1,6 +1,6 @@
 import pandas as pd
 from mlxtend.preprocessing import TransactionEncoder
-from mlxtend.frequent_patterns import apriori
+from mlxtend.frequent_patterns import fpgrowth
 from mlxtend.frequent_patterns import association_rules
 
 min_sup = 0.2
@@ -40,8 +40,8 @@ df = pd.DataFrame(te_ary, columns=te.columns_)
 
 print(df, "\n")
 
-# Generate the frequent itemsets using the apriori algorithm
-frequent_itemsets = apriori(
+# Generate the frequent itemsets using the fp-growth algorithm
+frequent_itemsets = fpgrowth(
     df, min_support=min_sup, use_colnames=True, verbose=True)
 
 print(frequent_itemsets, "\n")
